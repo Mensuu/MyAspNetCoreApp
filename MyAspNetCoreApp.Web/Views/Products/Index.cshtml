@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Product> //ViewModel ile veriler taşındı.
+<h1>Ürünler</h1>
+<a asp-controller="products" asp-action="add">Ekle</a> @*Add metodu parametre almadığı için id eklemeye gerek yoktur.*@
+<table class="table"> @*Tablo oluşturuldu.Bossrap ile gelen class oluşturuldu.*@
+    <thead> @*Aşağıdaki kısımlar sabit*@
+        <td>Id</td>
+        <th>İsim</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody> @*base practice açısından body tagı içerisine alındı.*@
+    @foreach (var item in Model) //Bundan sonra gelen datalar dinamik olduğu için foreach kullanıldı.
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Stock</td>
+            <td>
+                <a asp-controller="products" asp-action="remove" asp-route-id =" @item.Id">Sil</a>
+                    <a asp-controller="products" asp-action="update" asp-route-id=" @item.Id">Güncelle</a>
+            </td> @*asp yazıldığında gelenlere tag helper denmektedir.Link yollandı.*@
+        </tr>
+    }
+    </tbody>
+   
+</table>
+
+
