@@ -6,9 +6,9 @@ namespace MyAspNetCoreApp.Web.Models
     {
         private static List<Product> _products = new List<Product>() //İlk yüklendiğinde dataları yüklemesi için static olan property ilk initialize edildiğin anda bu dataları yükleyecektir.
         {
-            new () { Id = 1, Name = "Kalem 1", Price = 100, Stock = 100 }, 
-            new () { Id = 2, Name = "Kalem 2", Price = 200, Stock = 200 },
-            new () { Id = 3, Name = "Kalem 3", Price = 300, Stock = 300 }
+            //new () { Id = 1, Name = "Kalem 1", Price = 100, Stock = 100 }, 
+            //new () { Id = 2, Name = "Kalem 2", Price = 200, Stock = 200 },
+            //new () { Id = 3, Name = "Kalem 3", Price = 300, Stock = 300 }
         }; //Nesne örneği oluşturuldu.Aşağıda yapılıcak özelliklerle erişebilir hale getirilicektir.
         public List<Product> GetAll() => _products; //Birşey dönülmeyecekse bu şekilde yazılırsa return olarak dönmeye gerek yoktur.
         public void Add(Product newProduct) => _products.Add(newProduct);
