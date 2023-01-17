@@ -5,7 +5,7 @@ namespace MyAspNetCoreApp.Web.Controllers
     public class Product2
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
     public class OrnekController : Controller
     { 
