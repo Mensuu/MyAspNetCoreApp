@@ -14,7 +14,7 @@ namespace MyAspNetCoreApp.Web.Models
         }
         public DbSet<Product> Products { get; set; } 
         //Product sınıfı generic olarak enitity olarak oluşturuldu.Eğer isimini veritabanınkinden farklı verilirse attribute verelirmesi gerekir.
-        //Products.cs içerisine [Table("Products")] yazılmalıdır.
+        //Products.cs içerisine [Table("Products")] yazılmalıdır. 
     }
    
 }

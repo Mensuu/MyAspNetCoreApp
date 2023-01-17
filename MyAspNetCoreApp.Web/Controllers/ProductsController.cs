@@ -63,7 +63,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
            return View();
         }
-
+         
         public IActionResult Update(int id) //Gizli Http tipi Get isteğidir.Formlar ile çalışıldığında host istekleri olacaktır.
         {
             return View();

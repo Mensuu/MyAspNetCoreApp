@@ -3,7 +3,7 @@ using MyAspNetCoreApp.Web.Models;
 
 namespace MyAspNetCoreApp.Web
 {
-    public class Program
+    public class Program 
     {
         public static void Main(string[] args)
         {

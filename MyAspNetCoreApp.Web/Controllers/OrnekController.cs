@@ -8,7 +8,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         public string Name { get; set; }
     }
     public class OrnekController : Controller
-    {
+    { 
         public IActionResult Index()
         {
             // --ViewBag ve ViewData--

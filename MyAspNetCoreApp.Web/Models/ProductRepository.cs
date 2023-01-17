@@ -16,7 +16,7 @@ namespace MyAspNetCoreApp.Web.Models
         {
             var hasProduct = _products.FirstOrDefault(p => p.Id == Id);
             if (hasProduct == null)
-            {
+            { 
                 throw new Exception($"Bu id({Id})'ye sahip ürün bulunmamaktadır."); //Dışarıdan ifade tanımladığımızda başına $ işareti koyulur.
             }
             _products.Remove(hasProduct);

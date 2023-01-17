@@ -10,7 +10,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult NoLayout()
         {
-            return View();
+            return View(); 
         }
     }
 }
