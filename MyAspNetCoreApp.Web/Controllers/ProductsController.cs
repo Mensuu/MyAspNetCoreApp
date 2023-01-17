@@ -33,13 +33,13 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             _context= context; //Nesne örneği üretilmiş bir DbContext sınıfı.
 
-            if (!_context.Products.Any())
-            {
-                _context.Products.Add(new Product () { Id = 1, Name = "Kalem 1", Price = 100, Stock = 100 });
-                _context.Products.Add(new Product () { Id = 2, Name = "Kalem 2", Price = 200, Stock = 200 });
-                _context.Products.Add(new Product () { Id = 3, Name = "Kalem 3", Price = 300, Stock = 300 });
-                _context.SaveChanges(); //SaveChanges ile verileri veri tabanına ekler.
-            }
+            //if (!_context.Products.Any())
+            //{
+            //    _context.Products.Add(new Product () { Id = 1, Name = "Kalem 1", Price = 100, Stock = 100 , Barcode = "Kalem" , Width = 1 ,Height = 1});
+            //    _context.Products.Add(new Product () { Id = 2, Name = "Kalem 2", Price = 200, Stock = 200 , Barcode = "Kalem", Width = 1, Height = 1 });
+            //    _context.Products.Add(new Product () { Id = 3, Name = "Kalem 3", Price = 300, Stock = 300 , Barcode = "Kalem", Width = 1, Height = 1 });
+            //    /*_context.SaveChanges();*/ //SaveChanges ile verileri veri tabanına ekler.
+            //}
 
 
         }
@@ -59,9 +59,30 @@ namespace MyAspNetCoreApp.Web.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet] //Sayftada gösterilmek istenildiğinde kullanılır.
         public IActionResult Add() //Gizli Http tipi Get isteğidir.Formlar ile çalışıldığında host istekleri olacaktır. 
         {
            return View();
+        }
+        [HttpPost] //Kaydetmek için kullanılır.Genellikle bir sayfası olmaz.
+        public IActionResult Add(string Name , decimal Price , int Stock , string Barcode , int Widht , int Height) //Model Binding : Kullanıcı buttona bastığında çalışır.
+        {
+            //Request Header - Body
+            //Get metofunda veriler Url'de taşınır fakat bu çok sağlıklı bir yöntem değildir.Post tercih edilir.
+
+
+            // 1.Yöntem:
+            //var name = HttpContext.Request.Form["Name"].ToString();
+            //var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
+            //var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
+            //var barcode = HttpContext.Request.Form["Barcode"].ToString();
+            //var widht = int.Parse(HttpContext.Request.Form["Widht"].ToString());
+            //var height = int.Parse(HttpContext.Request.Form["Height"].ToString());
+            Product newProduct = new Product() { Name=Name , Price = Price , Stock= Stock , Barcode= Barcode , Width = Widht , Height = Height}; //Product nesnesi oluşturuldu.
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+            return RedirectToActionPermanent("Index");
         }
          
         public IActionResult Update(int id) //Gizli Http tipi Get isteğidir.Formlar ile çalışıldığında host istekleri olacaktır.

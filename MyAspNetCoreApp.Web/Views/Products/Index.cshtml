@@ -7,11 +7,12 @@
 <h1>Ürünler</h1>
 <a asp-controller="products" asp-action="add">Ekle</a> @*Add metodu parametre almadığı için id eklemeye gerek yoktur.*@
 <table class="table"> @*Tablo oluşturuldu.Bossrap ile gelen class oluşturuldu.*@
-    <thead> @*Aşağıdaki kısımlar sabit*@
+    <thead> @*Aşağıdaki kısımlar sabit.Witdh ve Height view'da gösterilmedi.*@
         <td>Id</td>
         <th>İsim</th>
         <th>Fiyat</th>
         <th>Stok</th>
+        <th>Barcode</th>
         <th>İşlem</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
+            <td>@item.Barcode</td>
             <td>
                 <a asp-controller="products" asp-action="remove" asp-route-id =" @item.Id">Sil</a>
                     <a asp-controller="products" asp-action="update" asp-route-id=" @item.Id">Güncelle</a>

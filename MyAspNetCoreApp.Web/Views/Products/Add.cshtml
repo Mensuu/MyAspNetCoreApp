@@ -4,4 +4,19 @@
 }
 
 <h1>Ürün Ekleme</h1>
+<form asp-controller="Products" asp-action="Add" method="post"> @*Bu datayı göndermek için belirtildi.*@
+    <label>Ürün İsim :</label>
+    <input type="text" name="Name"/>
+    <label>Ürün Fiyat :</label>
+    <input type="text" name="Price" />
+    <label>Ürün Stok :</label>
+    <input type="text" name="Stock" />
+    <label>Ürün Barcode :</label>
+    <input type="text" name="Barcode" />
+    <label>Ürün Uzunluk :</label>
+    <input type="text" name="Widht" />
+    <label>Ürün Genişlik :</label>
+    <input type="text" name="Height" />
+    <button type="submit">Ürün Kaydet</button>
+</form>
 
