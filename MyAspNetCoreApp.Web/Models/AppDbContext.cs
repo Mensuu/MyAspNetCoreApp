@@ -17,4 +17,4 @@ namespace MyAspNetCoreApp.Web.Models
         //Products.cs içerisine [Table("Products")] yazılmalıdır. 
     }
    
-}
+} 

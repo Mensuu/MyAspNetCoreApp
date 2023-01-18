@@ -4,5 +4,30 @@
 }
 
 <h1>Ürün Güncelleme</h1>
+@model Product
+<form asp-controller="Products" asp-action="Update" asp-route-type="type1" method="post">
+    @*asp-route-productId="@Model.Id"*@
+    @*Bu datayı göndermek için belirtildi.Id query string olarak gösterildi diğerleri ise body'den alındı.*@
+    <label>Ürün İsim :</label>
+   <input type="hidden" asp-for="Id"/>
+    <input type="text" asp-for="Name"/>
+    </br>
+    <label>Ürün Fiyat :</label>
+    <input type="text" asp-for="Price"/>
+    </br>
+    <label>Ürün Stok :</label>
+    <input type="text" asp-for="Stock"/>
+    </br>
+    <label>Ürün Barcode :</label>
+    <input type="text" asp-for="Barcode"/>
+    </br>
+    <label>Ürün Genişlik :</label>
+    <input type="text" asp-for="Width"/>
+    </br>
+    <label>Ürün Uzunluk :</label>
+    <input type="text" asp-for="Height"/>
 
- 
+    <button type="submit">Ürün Kaydet</button>
+</form>
+
+  

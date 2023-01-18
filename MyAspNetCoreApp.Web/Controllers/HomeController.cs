@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyAspNetCoreApp.Web.Controllers.Helpers;
 using MyAspNetCoreApp.Web.Models;
 using System.Diagnostics;
 
@@ -6,10 +7,12 @@ namespace MyAspNetCoreApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        //private Helper _helper;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger /*, Helper helper*/)
         {
+        //    _helper = helper;
             _logger = logger;
         }
          
@@ -20,6 +23,8 @@ namespace MyAspNetCoreApp.Web.Controllers
 
         public IActionResult Privacy()
         {
+            //var text = "asp.net";
+            //var upperText = _helper.Upper(text);
             return View();
         }
 

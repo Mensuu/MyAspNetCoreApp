@@ -5,10 +5,19 @@
 
 @model List<Product> //ViewModel ile veriler taşındı.
 <h1>Ürünler</h1>
+
+@if(TempData["status"] != null)
+{
+    <div class="alert - primary" role="alert">
+        @TempData["status"]
+    </div>
+}
+
 <a asp-controller="products" asp-action="add">Ekle</a> @*Add metodu parametre almadığı için id eklemeye gerek yoktur.*@
 <table class="table"> @*Tablo oluşturuldu.Bossrap ile gelen class oluşturuldu.*@
     <thead> @*Aşağıdaki kısımlar sabit.Witdh ve Height view'da gösterilmedi.*@
-        <td>Id</td>
+        <th>Id</th>
+
         <th>İsim</th>
         <th>Fiyat</th>
         <th>Stok</th>
@@ -31,7 +40,7 @@
             </td> @*asp yazıldığında gelenlere tag helper denmektedir.Link yollandı.*@
         </tr>
     }
-    </tbody>
+    </tbody> 
    
 </table>
 

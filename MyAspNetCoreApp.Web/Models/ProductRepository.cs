@@ -4,7 +4,7 @@ namespace MyAspNetCoreApp.Web.Models
 {
     public class ProductRepository
     {
-        private static List<Product> _products = new List<Product>() //İlk yüklendiğinde dataları yüklemesi için static olan property ilk initialize edildiğin anda bu dataları yükleyecektir.
+        private static List<Product> _products = new() //İlk yüklendiğinde dataları yüklemesi için static olan property ilk initialize edildiğin anda bu dataları yükleyecektir.
         {
             //new () { Id = 1, Name = "Kalem 1", Price = 100, Stock = 100 }, 
             //new () { Id = 2, Name = "Kalem 2", Price = 200, Stock = 200 },
@@ -37,3 +37,4 @@ namespace MyAspNetCoreApp.Web.Models
         }
     }
 }
+ 

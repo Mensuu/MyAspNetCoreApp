@@ -7,7 +7,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         public int Id { get; set; }
         public string? Name { get; set; }
     }
-    public class OrnekController : Controller
+    public class OrnekController : Controller 
     { 
         public IActionResult Index()
         {

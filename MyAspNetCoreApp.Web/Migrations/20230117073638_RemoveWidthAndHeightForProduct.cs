@@ -10,7 +10,7 @@ namespace MyAspNetCoreApp.Web.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.AddColumn<string>( 
                 name: "Barcode",
                 table: "Products",
                 type: "nvarchar(max)",

@@ -12,7 +12,7 @@ namespace MyAspNetCoreApp.Web.Migrations
         {
 
         }
-
+         
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {

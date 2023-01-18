@@ -7,7 +7,7 @@ namespace MyAspNetCoreApp.Web.Migrations
     /// <inheritdoc />
     public partial class AddWidthAndHeightForProduct : Migration
     {
-        /// <inheritdoc />
+        /// <inheritdoc /> 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
 

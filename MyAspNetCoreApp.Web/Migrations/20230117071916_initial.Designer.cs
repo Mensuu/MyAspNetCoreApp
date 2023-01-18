@@ -12,7 +12,7 @@ namespace MyAspNetCoreApp.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20230117071916_initial")]
-    partial class initial
+    partial class İnitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
