@@ -9,6 +9,8 @@
         public string? Barcode { get; set; }
         public int Width { get; set; } 
         public int Height { get; set; }
+        public bool IsPublish { get; set; }
+        public int Expire { get; set; }
     }
 }
  
