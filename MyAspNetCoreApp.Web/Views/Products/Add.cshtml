@@ -23,36 +23,50 @@
 
 <form asp-controller="Products" asp-action="Add" method="post" style="width:500px;">
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün İsmi :</label>
+        <label asp-for="Name" class="form-label">Ürün İsmi :</label>
         <input class="form-control" asp-for="Name">
     </div>
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün Fiyat :</label>
+        <label asp-for="Name" class="form-label">Ürün Fiyat :</label>
         <input class="form-control" asp-for="Price">
     </div>
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün Stok :</label>
+        <label asp-for="Name" class="form-label">Ürün Stok :</label>
         <input class="form-control" asp-for="Stock">
     </div>
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün Barkot :</label>
+        <label asp-for="Name" class="form-label">Ürün Barkot :</label>
         <input class="form-control" asp-for="Barcode">
     </div>
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün Genişlik :</label>
+        <label asp-for="Name" class="form-label">Ürün Genişlik :</label>
         <input class="form-control" asp-for="Width">
     </div>
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün Uzunluk :</label>
+        <label asp-for="Name" class="form-label">Ürün Uzunluk :</label>
         <input class="form-control" asp-for="Height">
     </div>
     <div class="from-check">
-        <label class="form-check-label" for="flexCheckDefault">Yayınlansın mı?</label>
+        <label class="form-check-label" asp-for="IsPublish">Yayınlansın mı?</label>
         <input class="form-check-input" asp-for="IsPublish">
+
     </div>
-    <br/>
+
+    <div class="mb-3 mt-3">
+        <span>Ürün kaç ay satışta kalacaktır?</span>
+        @foreach (var item in ViewBag.Expire as Dictionary<string , int>)
+
+        {
+            <div class="from-check">
+                <input class="form-check-input" type="radio" id="@(item.Value)Expire" asp-for="Expire" value="@item.Value">
+
+                <label class="form-check-label" asp-for="Expire" for="@(item.Value)Expire">@item.Key</label>
+            </div>
+        }
+    </div>
+
     <button class="btn btn-primary" type="submit">Ürün Kaydet</button>
-   
+
 </form>
 
 @*<form asp-controller="Products" asp-action="Add" method="post">

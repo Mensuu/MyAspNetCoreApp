@@ -7,9 +7,9 @@ namespace MyAspNetCoreApp.Web.Controllers
     public class ProductsController : Controller
     {
         private AppDbContext _context;
-        private IHelper _helper;
+        //private IHelper _helper;
         private readonly ProductRepository _productRepository; 
-        public ProductsController(AppDbContext context, IHelper helper) //contractor'da içi dolduruldu. 
+        public ProductsController(AppDbContext context/*, IHelper helper*/) //contractor'da içi dolduruldu. 
             //IHelper helper yazılması Constractor Injection olarak adlandırılır.
         { 
             //DI Container : Classların alınabilmesine imkan veririr
@@ -45,24 +45,24 @@ namespace MyAspNetCoreApp.Web.Controllers
             //    //SaveChanges ile verileri veri tabanına ekler.Id identity olduğundan kaynaklı id yazıldığında hata alacaktır.
             //}
 
-            _helper= helper;
+            //_helper= helper;
 
         }
-        public IActionResult Index([FromServices]IHelper helper2)
+        public IActionResult Index(/*[FromServices]IHelper helper2*/)
             //IHelper helper2 burada Method Injection olarak kullanılır.
             //FromServices attribute'ü IHelper helper2'nin DI Container'den geliceğini belirtir.Kullanıcıdan alınmaz.
         {
             //var products = _productRepository.GetAll(); //GetAll metoduyla beraber _productRepository'dan tüm dataları products'a alındı.
 
-            var text = "Asp.Net";
-            //IHelper helper = new Helper();
-            //Bu kullanım doğru değil çünkü Interface kullanılmış olsada somut nesne verildi ve new kullanıldı.
-            //Amaç DI ile bunlardan kurtulmaktır.
-            //Uygulamanın genelini ilgilendiren tüm sınıfların dışarından birer constractor olarak gelmesini sağlamaktır. 
-            //Şuan uygulama herhangi bir class'ın constractor'ında bu interface ile karşılaştığında hangi sınıftan nesne örneğini üreteceğini
-            //ve ayni zamanda da yaşam döngüsünün nasıl olacağını bilmiyor.Bu yüzden program.cs tarafına nesne sınıfı üretilmesi gerektiği söylenmelidir.
-            var upperText = _helper.Upper(text);
-            var status = _helper.Equals(helper2);
+            //var text = "Asp.Net";
+            ////IHelper helper = new Helper();
+            ////Bu kullanım doğru değil çünkü Interface kullanılmış olsada somut nesne verildi ve new kullanıldı.
+            ////Amaç DI ile bunlardan kurtulmaktır.
+            ////Uygulamanın genelini ilgilendiren tüm sınıfların dışarından birer constractor olarak gelmesini sağlamaktır. 
+            ////Şuan uygulama herhangi bir class'ın constractor'ında bu interface ile karşılaştığında hangi sınıftan nesne örneğini üreteceğini
+            ////ve ayni zamanda da yaşam döngüsünün nasıl olacağını bilmiyor.Bu yüzden program.cs tarafına nesne sınıfı üretilmesi gerektiği söylenmelidir.
+            //var upperText = _helper.Upper(text);
+            //var status = _helper.Equals(helper2);
 
 
             var products = _context.Products.ToList();
@@ -81,7 +81,14 @@ namespace MyAspNetCoreApp.Web.Controllers
         [HttpGet] //Sayftada gösterilmek istenildiğinde kullanılır.
         public IActionResult Add() //Gizli Http tipi Get isteğidir.Formlar ile çalışıldığında host istekleri olacaktır. 
         {
-           return View();
+            ViewBag.Expire = new Dictionary<string , int>() 
+            {
+                { "1 Ay", 1 },
+                { "3 Ay", 3 },
+                { "6 Ay", 6 },
+                { "12 Ay", 12 }
+            };
+            return View();
         }
         [HttpPost] //Kaydetmek için kullanılır.Genellikle bir sayfası olmaz.
         public IActionResult Add(Product newProduct) //Model Binding : Kullanıcı buttona bastığında çalışır.

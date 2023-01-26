@@ -1,12 +1,11 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
 @model List<Product> //ViewModel ile veriler taşındı.
 <h1>Ürünler</h1>
 
-@if(TempData["status"] != null)
+@if (TempData["status"] != null)
 {
     <div class="alert - primary" role="alert">
         @TempData["status"]
@@ -14,34 +13,45 @@
 }
 
 <a asp-controller="products" asp-action="add">Ekle</a> @*Add metodu parametre almadığı için id eklemeye gerek yoktur.*@
-<table class="table"> @*Tablo oluşturuldu.Bossrap ile gelen class oluşturuldu.*@
-    <thead> @*Aşağıdaki kısımlar sabit.Witdh ve Height view'da gösterilmedi.*@
-        <th>Id</th>
+<table class="table">
+    @*Tablo oluşturuldu.Bossrap ile gelen class oluşturuldu.*@
+    <thead>
+        @*Aşağıdaki kısımlar sabit.Witdh ve Height view'da gösterilmedi.*@
+        <tr>
+            <th>Id</th>
+            <th>İsim</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Barcode</th>
+            <th>Yayınlasın mı?</th>
+            <th>Süre</th>
+            <th>İşlem</th>
 
-        <th>İsim</th>
-        <th>Fiyat</th>
-        <th>Stok</th>
-        <th>Barcode</th>
-        <th>İşlem</th>
+
         </tr>
     </thead>
-    <tbody> @*base practice açısından body tagı içerisine alındı.*@
-    @foreach (var item in Model) //Bundan sonra gelen datalar dinamik olduğu için foreach kullanıldı.
-    {
-        <tr>
-            <td>@item.Id</td> 
-            <td>@item.Name</td>
-            <td>@item.Price</td>
-            <td>@item.Stock</td>
-            <td>@item.Barcode</td>
-            <td>
-                <a asp-controller="products" asp-action="remove" asp-route-id =" @item.Id">Sil</a>
+    <tbody>
+        @*base practice açısından body tagı içerisine alındı.*@
+        @foreach (var item in Model) //Bundan sonra gelen datalar dinamik olduğu için foreach kullanıldı.
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>@item.Barcode</td>
+                <td>
+                    @(item.IsPublish ? "Evet" : "Hayır")
+                </td>
+                <td>@item.Expire</td>
+                <td>
+                    <a asp-controller="products" asp-action="remove" asp-route-id=" @item.Id">Sil</a>
                     <a asp-controller="products" asp-action="update" asp-route-id=" @item.Id">Güncelle</a>
-            </td> @*asp yazıldığında gelenlere tag helper denmektedir.Link yollandı.*@
-        </tr>
-    }
-    </tbody> 
-   
+                </td> @*asp yazıldığında gelenlere tag helper denmektedir.Link yollandı.*@
+            </tr>
+        }
+    </tbody>
+
 </table>
 
 

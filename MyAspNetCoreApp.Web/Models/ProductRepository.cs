@@ -30,7 +30,12 @@ namespace MyAspNetCoreApp.Web.Models
             }
             hasProduct.Name= updateProduct.Name;
             hasProduct.Price= updateProduct.Price;
-            hasProduct.Stock= updateProduct.Stock; //Bu şekilde yazarak güncellendi fakat güncellenen bilgiler tekrar yazılmalıdır.
+            hasProduct.Stock= updateProduct.Stock;//Bu şekilde yazarak güncellendi fakat güncellenen bilgiler tekrar yazılmalıdır.
+            hasProduct.Barcode = updateProduct.Barcode;
+            hasProduct.Width = updateProduct.Width;
+            hasProduct.Height = updateProduct.Height;
+            hasProduct.IsPublish = updateProduct.IsPublish;
+            hasProduct.Expire = updateProduct.Expire;
             var index = _products.FindIndex(x => x.Id == updateProduct.Id);
             _products[index] = hasProduct; //Yeni ürün hasProduct'a güncellendi.
 
